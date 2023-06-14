@@ -488,7 +488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 299756630}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Items
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,6 +582,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 197236, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
       insertIndex: -1
       addedObject: {fileID: 801370572}
+    - targetCorrespondingSourceObject: {fileID: 197236, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 801370575}
   m_SourcePrefab: {fileID: 100100000, guid: 4fc855fb7bf094a0891967175e5bdb17, type: 3}
 --- !u!4 &306911620 stripped
 Transform:
@@ -967,6 +970,14 @@ PrefabInstance:
     - target: {fileID: 1454192611189718, guid: 4ebc420b94c1c9f469d3c2e96b6fde3c, type: 3}
       propertyPath: m_Name
       value: DoorWay
+      objectReference: {fileID: 0}
+    - target: {fileID: 1454192611189718, guid: 4ebc420b94c1c9f469d3c2e96b6fde3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488547631264182, guid: 4ebc420b94c1c9f469d3c2e96b6fde3c, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4260809997432608, guid: 4ebc420b94c1c9f469d3c2e96b6fde3c, type: 3}
       propertyPath: m_RootOrder
@@ -1942,6 +1953,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.21674046, y: 0.21674031, z: 0.8306626}
   m_Center: {x: -0.000000059604645, y: 0.0000000074505815, z: 0.051116608}
+--- !u!114 &801370575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 801370569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9180bf81e994684d967719ffb5ee47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Mana Potion
 --- !u!1 &844293581
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,8 +1998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68f88bfc89e340b49b89ebcf4ad3a5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastDistance: 5
-  layerMask:
+  raycastDistance: 2
+  interactable:
     serializedVersion: 2
     m_Bits: 64
   interactionInfo: {fileID: 399787024}
@@ -2217,6 +2241,7 @@ GameObject:
   - component: {fileID: 892752523}
   - component: {fileID: 892752522}
   - component: {fileID: 892752528}
+  - component: {fileID: 892752529}
   m_Layer: 0
   m_Name: Player_Rigidbody
   m_TagString: Untagged
@@ -2318,7 +2343,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b132453d66e77854295cd4ed66dce69d, type: 2}
+  - {fileID: 2100000, guid: 774fb2efcf5a06e4ebb09ced855a11c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2377,6 +2402,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHP: 0
   attributes: []
+--- !u!114 &892752529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 892752521}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f88bfc89e340b49b89ebcf4ad3a5d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 5
+  interactable:
+    serializedVersion: 2
+    m_Bits: 64
+  interactionInfo: {fileID: 399787024}
 --- !u!1 &915846248
 GameObject:
   m_ObjectHideFlags: 0
@@ -5021,6 +5063,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 131850, guid: 8093457b576f04fbfa270bca1b2553a1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1740722328}
+    - targetCorrespondingSourceObject: {fileID: 131850, guid: 8093457b576f04fbfa270bca1b2553a1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1740722331}
   m_SourcePrefab: {fileID: 100100000, guid: 8093457b576f04fbfa270bca1b2553a1, type: 3}
 --- !u!4 &1669155352 stripped
 Transform:
@@ -5256,6 +5301,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.8243998, y: 0.23502229, z: 6.581685}
   m_Center: {x: 0.01827201, y: -0.0000009536743, z: -9.861026e-11}
+--- !u!114 &1740722331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1740722325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9180bf81e994684d967719ffb5ee47c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Bow
 --- !u!1 &1771177952
 GameObject:
   m_ObjectHideFlags: 0
@@ -5778,7 +5836,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1942212617}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Interactables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
