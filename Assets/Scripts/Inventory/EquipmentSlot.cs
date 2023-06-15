@@ -13,6 +13,8 @@ public class EquipmentSlot : MonoBehaviour
 
     public void SetItem(ItemData data)
     {
+        itemData = data;
+        itemIcon.sprite = data.icon;
         // TODO
         // Set the item data the and icons here
         // Make sure to apply the attributes once an item is equipped

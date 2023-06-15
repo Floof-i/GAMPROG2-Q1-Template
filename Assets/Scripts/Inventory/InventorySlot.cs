@@ -10,6 +10,10 @@ public class InventorySlot : MonoBehaviour
 
     public void SetItem(ItemData data)
     {
+        Debug.Log("Set " + data.id);
+        itemIcon.enabled = true;
+        itemData = data;
+        itemIcon.sprite = data.icon;
         // TODO
         // Set the item data the and icons here
     }
@@ -17,6 +21,8 @@ public class InventorySlot : MonoBehaviour
     public void UseItem()
     {
         InventoryManager.Instance.UseItem(itemData);
+        itemData = null;
+        itemIcon = null;
         // TODO
         // Reset the item data and the icons here
     }
