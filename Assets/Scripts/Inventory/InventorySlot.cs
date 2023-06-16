@@ -14,18 +14,27 @@ public class InventorySlot : MonoBehaviour
         itemIcon.enabled = true;
         itemData = data;
         itemIcon.sprite = data.icon;
-        // TODO
+        // TODO[DONE]
         // Set the item data the and icons here
     }
 
     public void UseItem()
-    {
-        InventoryManager.Instance.UseItem(itemData);
-
-        itemIcon.enabled = false;
-        itemData = null;
-        itemIcon.sprite = null;
-        // TODO
+    {     
+        if(itemData != null)
+        {
+            if(itemData.type == ItemType.Unusable)
+            {
+                Debug.Log("Item is not usable!");
+            }
+            else
+            {
+                InventoryManager.Instance.UseItem(itemData);
+                itemIcon.enabled = false;
+                itemData = null;
+                itemIcon.sprite = null;
+            }
+        }
+        // TODO [DONE]
         // Reset the item data and the icons here
     }
 
