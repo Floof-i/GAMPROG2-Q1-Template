@@ -2601,13 +2601,9 @@ MonoBehaviour:
       value: 1
   - id: Key
     icon: {fileID: 21300000, guid: e30e7f1121c83ed469e6242c11d18e05, type: 3}
-    type: 1
-    slotType: 2
-    attributes:
-    - type: 4
-      value: 1
-    - type: 3
-      value: 1
+    type: 2
+    slotType: 5
+    attributes: []
   inventorySlots:
   - {fileID: 2580618980867222340}
   - {fileID: 2137537908}
