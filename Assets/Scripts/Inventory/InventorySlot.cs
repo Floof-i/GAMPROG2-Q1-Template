@@ -18,24 +18,46 @@ public class InventorySlot : MonoBehaviour
         // Set the item data the and icons here
     }
 
+    public void RemoveItem()
+    {
+        itemIcon.enabled = false;
+        itemData = null;
+        itemIcon.sprite = null;
+    }
+
     public void UseItem()
     {     
         if(itemData != null)
         {
-            if(itemData.type == ItemType.Unusable)
+            if(itemData.type == ItemType.Key)
             {
                 Debug.Log("Item is not usable!");
             }
             else
             {
-                InventoryManager.Instance.UseItem(itemData);
-                itemIcon.enabled = false;
-                itemData = null;
-                itemIcon.sprite = null;
+                bool result = InventoryManager.Instance.UseItem(itemData);
+                if(result == true)
+                {
+                    itemIcon.enabled = false;
+                    itemData = null;
+                    itemIcon.sprite = null;
+                }
             }
         }
         // TODO [DONE]
         // Reset the item data and the icons here
+    }
+
+    public bool HasKey()
+    {
+        if(HasItem() == true)
+        {
+            return itemData.type == ItemType.Key;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public bool HasItem()

@@ -16,7 +16,7 @@ public enum ItemType
 {
     Consumable,
     Equipable,
-    Unusable,
+    Key,
 }
 
 public enum EquipmentSlotType

@@ -35,9 +35,18 @@ public class RaycastController : MonoBehaviour
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * raycastDistance, Color.red);
             Debug.Log("Collided with interactable!");
             interactionInfo.enabled = true;
-            Item item = hit.collider.GetComponent("Item") as Item;
-            interactionInfo.text = "Interact with " + item.id;
 
+            if (hit.collider.tag == "Item")
+            {
+                Item item = hit.collider.GetComponent("Item") as Item;
+                interactionInfo.text = "Interact with " + item.id;
+            }
+            else if(hit.collider.tag == "Door")
+            {
+                Door door = hit.collider.GetComponent("Door") as Door;
+                interactionInfo.text = "Interact with " + door.id;
+            }
+            
             mouseInput();
         }
         else if(!interactableHover)
@@ -53,8 +62,16 @@ public class RaycastController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Left click!");
-            Item item = hit.collider.GetComponent("Item") as Item;
-            item.Interact();
+            if (hit.collider.tag == "Item")
+            {
+                Item item = hit.collider.GetComponent("Item") as Item;
+                item.Interact();
+            }
+            else if(hit.collider.tag == "Door")
+            {
+                Door door = hit.collider.GetComponent("Door") as Door;
+                door.Interact();
+            } 
         }
     }
 }

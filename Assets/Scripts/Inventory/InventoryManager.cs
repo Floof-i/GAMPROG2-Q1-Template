@@ -51,18 +51,29 @@ public class InventoryManager : MonoBehaviour
 
     #endregion
 
-    public void UseItem(ItemData data)
+    public bool UseItem(ItemData data)
     {
         if(data.type == ItemType.Consumable)
         {
             Debug.Log("Used " + data.id);
             InventoryManager.Instance.player.AddAttributes(data.attributes);
+            return true;
         } 
         else if(data.type == ItemType.Equipable)
         {
             int index = GetEquipmentSlot(data.slotType);
-            equipmentSlots[index].SetItem(data);
+            if(index > -1)
+            {
+                equipmentSlots[index].SetItem(data);
+                return true;
+            }
+            else
+            {
+                Debug.Log("Slot is full!");
+                return false;
+            }
         }
+    return false;
         // TODO[DONE]
         // If the item is a consumable, simply add the attributes of the item to the player.
         // If it is equippable, get the equipment slot that matches the item's slot.
@@ -96,6 +107,31 @@ public class InventoryManager : MonoBehaviour
         //2. Get the index of the InventorySlot that does not have any Item and set its Item to the Item found
     }
 
+    public bool UseKey()
+    {
+        int index = DetectKeySlot();
+
+        if (index > -1)
+        {
+            inventorySlots[index].RemoveItem();
+            return true;
+        }
+        return false;
+    }
+
+    public int DetectKeySlot()
+    {
+        for (int i = 0; i < inventorySlots.Count; i++)
+        {
+            Debug.Log("Checking inventory slot " + i);
+            if (inventorySlots[i].HasKey() == true)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public int GetEmptyInventorySlot()
     {
         for (int i = 0; i < inventorySlots.Count; i++)
@@ -111,7 +147,6 @@ public class InventoryManager : MonoBehaviour
         return -1;
         //TODO [DONE]
         //Check which inventory slot doesn't have an Item and return its index
-        
     }
 
     public int GetEquipmentSlot(EquipmentSlotType type)
@@ -119,7 +154,9 @@ public class InventoryManager : MonoBehaviour
         for (int i = 0; i < equipmentSlots.Count; i++)
         {
             Debug.Log("Checking equipment slot " + i);
-            if(equipmentSlots[i].type == type)
+            EquipmentSlot slot = equipmentSlots[i];
+
+            if(equipmentSlots[i].type == type && slot.HasItem() == false)
             {
                 Debug.Log("Found valid slot.");
                 return i;

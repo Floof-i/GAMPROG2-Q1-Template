@@ -52,4 +52,9 @@ public class EquipmentSlot : MonoBehaviour
         // Make sure to return the equipment to the inventory when there is an available slot.
         // Reset the item data and icons here
     }
+
+    public bool HasItem()
+    {
+        return itemData != null;
+    }
 }
