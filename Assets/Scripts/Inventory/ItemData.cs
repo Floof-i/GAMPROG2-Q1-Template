@@ -15,7 +15,8 @@ public class ItemData
 public enum ItemType
 {
     Consumable,
-    Equipabble, 
+    Equipable,
+    Unusable,
 }
 
 public enum EquipmentSlotType
@@ -26,7 +27,7 @@ public enum EquipmentSlotType
     Mainhand,
     Offhand,
     Nonequipment,
-    // TODO
+    // TODO [DONE]
     // Define other equipment slots here
 }
 
@@ -47,9 +48,10 @@ public enum AttributeType
 {
     HP,
     MP,
-    ATK,
+    STR,
+    AGI,
     DEF,
-    // TODO
+    // TODO [DONE]
     // Add other attribute types here
 }
 

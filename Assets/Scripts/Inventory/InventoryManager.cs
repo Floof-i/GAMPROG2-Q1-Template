@@ -53,6 +53,10 @@ public class InventoryManager : MonoBehaviour
 
     public void UseItem(ItemData data)
     {
+        if(data.type == 0)
+        {
+            InventoryManager.Instance.player.AddAttributes(data.attributes);
+        }
         // TODO
         // If the item is a consumable, simply add the attributes of the item to the player.
         // If it is equippable, get the equipment slot that matches the item's slot.
@@ -60,7 +64,7 @@ public class InventoryManager : MonoBehaviour
     }
 
    
-    public void AddItem(string itemID)
+    public bool AddItem(string itemID)
     {
         Debug.Log("Added " + itemID);
         foreach(ItemData item in itemDatabase)
@@ -70,9 +74,17 @@ public class InventoryManager : MonoBehaviour
                 Debug.Log(itemID + " found in Database");
 
                 int index = GetEmptyInventorySlot();
-                inventorySlots[index].SetItem(item);
+
+                if(index > -1)
+                {
+                    Debug.Log("Returned true!");
+                    inventorySlots[index].SetItem(item);
+                    return true;
+                }
             }
         }
+        Debug.Log("Returned false!");
+        return false;
         //TODO
         //1. Cycle through every item in the database until you find the item with the same id. DONE
         //2. Get the index of the InventorySlot that does not have any Item and set its Item to the Item found

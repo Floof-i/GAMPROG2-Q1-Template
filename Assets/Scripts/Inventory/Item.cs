@@ -8,7 +8,16 @@ public class Item : Interactable
     {
         // TODO: Add the item to the inventory. Make sure to destroy the prefab once the item is collected 
         Debug.Log("Interact activated!");
-        InventoryManager.Instance.AddItem(this.id);
-        Destroy(gameObject);
+        bool result = InventoryManager.Instance.AddItem(this.id);
+        if (result == true)
+        {
+            Debug.Log("There is free slot, item added.");
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("No free slot, item not added.");
+        }
+        
     }
 }
